@@ -1,0 +1,14 @@
+{
+  "name": "build",
+  "version": "0.1.0",
+  "description": "Simple site upload and download",
+  "private": true,
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "author": {
+    "name": "Jayce53"
+  },
+  "devDependencies": {
+    "gulp": "4^"
+  }
+}

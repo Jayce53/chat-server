@@ -1,0 +1,29 @@
+/**
+ * The user wants to send an image. This is the pre-upload check to see if we already have the image
+ * This message has the file's md5 hash. We check the user to see if we've seen it before
+ */
+
+import {Socket} from "socket.io";
+import {SocketEventHandler} from "@/classes/SocketEventHandler";
+import Eventnames from "@/eventnames";
+import {userStore} from "@/classes/UserStore";
+
+/**
+ * Export the event name so we can recognise unhandled events
+ */
+export const event = Eventnames.UPLOADCHECK;
+
+const UPLOAD_REQUIRED = true;
+
+function socketConnect(socket : Socket, md5 : string) {
+  console.log(`Upload check: ${socket.userId} md5: ${md5}`);
+
+  const uploadedFileName = userStore.getUploadedFileName(socket.userId!, md5);
+  if (uploadedFileName) {
+    socket.emit(Eventnames.FILEUPLOAD, !UPLOAD_REQUIRED, uploadedFileName);
+  } else {
+    socket.emit(Eventnames.FILEUPLOAD, UPLOAD_REQUIRED);
+  }
+}
+
+SocketEventHandler.register(Eventnames.UPLOADCHECK, socketConnect);

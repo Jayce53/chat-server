@@ -1,0 +1,8 @@
+- build
+- logs
+- locks
+- node_modules
+- .well-known
+- *.log
+- *.scss
+- uploads

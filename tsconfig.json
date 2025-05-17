@@ -1,0 +1,49 @@
+/* Visit https://aka.ms/tsconfig.json to read more about this file */
+{
+  "ts-node"         : {
+    "experimentalSpecifierResolution" : "node",
+  },
+  "compilerOptions" : {
+    "target"                           : "ESNext",
+    "module"                           : "ESNext",
+    "newLine"                          : "lf",
+    "strict"                           : true,
+    "allowJs"                          : true,
+    "checkJs"                          : false,
+    "jsx"                              : "preserve",
+    "declaration"                      : true,
+    "sourceMap"                        : true,
+    "outDir"                           : "./dist",
+    "isolatedModules"                  : true,
+    "moduleResolution"                 : "Node",
+    "baseUrl"                          : "./",
+    "resolveJsonModule"                : true,
+    "types"                            : [
+      "jest",
+      "node",
+      "express-session"
+    ],
+    "typeRoots"                        : [
+      "node_modules/@types",
+      "src/types"
+    ],
+    "allowSyntheticDefaultImports"     : true,
+    "esModuleInterop"                  : true,
+    "skipLibCheck"                     : true,
+    "forceConsistentCasingInFileNames" : true,
+    "paths"                            : {
+      "@/*" : [
+        "src/*"
+      ]
+    }
+  },
+  "include"         : [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "src/types/*.d.ts"
+  ],
+  "exclude"         : [
+    "node_modules",
+    "*.js"
+  ]
+}
