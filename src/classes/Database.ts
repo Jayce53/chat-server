@@ -16,8 +16,6 @@ const dbNetwork = os.platform() === "win32" ? "localhost" : "flirtable-mongo";  
 
 //const uri = `mongodb://${dbUser}:${dbPassword}@${dbNetwork}:27017/${dbDatabase}`;
 const uri = `mongodb://${dbUser}:${dbPassword}@${dbNetwork}:27017/${dbDatabase}?authSource=admin`;
-console.log(`uri: ${uri}`);
-
 
 class Database {
   private database: Db = null as unknown as Db;
@@ -30,6 +28,7 @@ class Database {
 
   public async connect(): Promise<void> {
     try {
+      console.log(`connecting with uri: ${uri}`);
       await this.dbClient.connect();
       this.database = this.dbClient.db();
       console.log("Connected to MongoDB");
